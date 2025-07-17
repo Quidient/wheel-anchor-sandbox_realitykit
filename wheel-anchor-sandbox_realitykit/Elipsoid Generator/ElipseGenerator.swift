@@ -75,12 +75,19 @@ func generateEllipsoidMesh(center: simd_float3, semiAxes: simd_float3, segments:
     return try! MeshResource.generate(from: [descriptor])
     
 }
+
+public func generateBoxSlab(width: Float, height: Float, depth: Float, cornerRadius: Float = 0.0) -> MeshResource {
+    let slabMesh = MeshResource.generateBox(width: width, height: height, depth: depth, cornerRadius: cornerRadius)
+    return slabMesh
+}
+
+
 var entities: [Entity] = []
 public func  placeEntitiesAroundEllipsoidPerimeter(ellipsoidCenter: SIMD3<Float>, semiAxes: SIMD3<Float>, numberOfEntities: Int, radiusOfEntities: Float, phiForPerimeter: Float) -> [Entity] {
      
-    let radiusX = semiAxes.x * 2.3
+    let radiusX = semiAxes.x * 2.5
     let radiusY = semiAxes.y
-    let radiusZ = semiAxes.z * 2.3
+    let radiusZ = semiAxes.z * 2.5
 
     
     for i in 0..<numberOfEntities {
